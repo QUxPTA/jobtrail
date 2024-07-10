@@ -5,6 +5,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import NavbarContainer from '@/components/navigation/NavbarContainer';
 import { ThemeProvider } from '@/components/theme-provider';
+import Hero from '@/components/landing/Hero';
 
 const fontSans = FontSans({
   subsets: ['latin'],
