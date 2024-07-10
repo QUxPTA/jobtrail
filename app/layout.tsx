@@ -3,6 +3,8 @@ import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 
 import { cn } from '@/lib/utils';
+import NavbarContainer from '@/components/navigation/NavbarContainer';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -27,7 +29,15 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NavbarContainer />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
