@@ -34,14 +34,14 @@ const Navbar = (props: Props) => {
         {/* Logo */}
         <Link
           href='/'
-          className='text-xl font-bold flex items-center cursor-pointer '
+          className='text-xl font-semibold flex items-center cursor-pointer'
         >
           <Image src='/logo.svg' alt='Jobtrail logo' width={30} height={30} />
-          <span className='ml-2 '>JobTrail</span>
+          <span className='ml-2 text-cyan-500'>Jobtrail</span>
         </Link>
 
         {/* Mobile Menu Button */}
-        <div className='md:hidden flex items-center'>
+        <div className='md:hidden flex items-center text-cyan-500'>
           <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {/* Icon for the mobile menu button */}
             <svg
@@ -63,13 +63,22 @@ const Navbar = (props: Props) => {
 
         {/* Navigation Links (hidden on small screens) */}
         <div className='hidden md:flex space-x-4'>
-          <Link href='/dashboard' className='hover:text-zinc-500'>
+          <Link
+            href='/dashboard'
+            className='font-semibold text-cyan-500 hover:text-cyan-700'
+          >
             Dashboard
           </Link>
-          <Link href='/leaderboard' className='hover:text-zinc-500'>
+          <Link
+            href='/leaderboard'
+            className='font-semibold text-cyan-500 hover:text-cyan-700'
+          >
             Leaderboard
           </Link>
-          <Link href='/about' className='hover:text-zinc-500'>
+          <Link
+            href='/about'
+            className='font-semibold text-cyan-500 hover:text-cyan-700'
+          >
             About
           </Link>
         </div>
@@ -77,9 +86,12 @@ const Navbar = (props: Props) => {
         {/* Sign In/Sign Up and Toggle Theme (always visible) */}
         <div className='flex space-x-4 items-center'>
           <Link href='/signin'>
-            <Button variant='ghost' className='border-b-cyan-500 rounded-xl'>
+            <Button
+              variant='ghost'
+              className='border-b-cyan-500 rounded-xl text-cyan-500'
+            >
               <UserCheck />
-              <span className='font-bold p-2'>Sign In</span>
+              <span className='text-cyan-500 font-bold p-2'>Sign In</span>
             </Button>
           </Link>
 
@@ -92,7 +104,7 @@ const Navbar = (props: Props) => {
       {mobileMenuOpen && (
         <div
           ref={dropdownRef}
-          className='md:hidden mt-4 absolute left-0 right-0 mx-auto border border-b-zinc-500 rounded-lg shadow-md py-2 w-48 z-50'
+          className='md:hidden mt-4 absolute left-0 right-0 mx-auto border border-b-zinc-500 rounded-lg shadow-md py-2 w-48 z-50 text-cyan-500'
         >
           <Link href='/dashboard' className='block px-4 py-2'>
             Dashboard
