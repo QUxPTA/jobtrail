@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   title: 'JobTrail',
   description: 'A job applications tracking tool',
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{

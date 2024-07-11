@@ -4,7 +4,6 @@ import Footer from '@/components/landing/Footer';
 import Hero from '@/components/landing/Hero';
 import Leaderboard from '@/components/landing/Leaderboard';
 import Team from '@/components/landing/Team';
-import Image from 'next/image';
 
 export default function Home() {
   return (
