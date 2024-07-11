@@ -11,7 +11,7 @@ type TeamMember = {
   linkedin?: string;
   portfolio?: string;
   twitter?: string;
-  bio?: string; // Adding bio field
+  bio?: string;
 };
 
 const teamData: TeamMember[] = [
@@ -34,7 +34,7 @@ const Team = () => {
       <h2 className='text-cyan-500 text-3xl font-bold text-center mb-8'>
         Meet the Team
       </h2>
-      <div className='container mx-auto px-4 py-6 md:py-8 md:px-12 items-center rounded-2xl border border-b-cyan-500 shadow-xl'>
+      <div className='max-w-screen-md container mx-auto px-4 py-6 md:py-8 md:px-12 items-center rounded-2xl border border-b-cyan-500 shadow-xl'>
         <div className='grid  rounded-2xl border border-b-cyan-500 shadow-xl'>
           {teamData.map((member) => (
             <div
