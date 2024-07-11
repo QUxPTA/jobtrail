@@ -1,4 +1,6 @@
 import AboutUs from '@/components/landing/AboutUs';
+import ContactForm from '@/components/landing/ContactForm';
+import Footer from '@/components/landing/Footer';
 import Hero from '@/components/landing/Hero';
 import Leaderboard from '@/components/landing/Leaderboard';
 import Team from '@/components/landing/Team';
@@ -19,6 +21,8 @@ export default function Home() {
       <article>
         <Team />
       </article>
+      <ContactForm />
+      <Footer />
     </main>
   );
 }
