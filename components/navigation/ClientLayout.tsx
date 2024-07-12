@@ -8,7 +8,8 @@ export const ClientLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const pathname = usePathname();
-  const showNavbar = !pathname.startsWith('/dashboard');
+  const showNavbar =
+    !pathname.startsWith('/dashboard') && !pathname.startsWith('/feed');
 
   return (
     <>
