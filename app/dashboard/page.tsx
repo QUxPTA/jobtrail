@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import DashboardLayout from '@/components/dashboard/DashboardLayout';
+import Sidebar from '@/components/ui/Sidebar';
 import { useAuth } from '@/lib/auth';
 
 const Dashboard = () => {
@@ -20,7 +20,7 @@ const Dashboard = () => {
   }
 
   return (
-    <DashboardLayout>
+    <Sidebar>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
         <div className=' p-6 rounded-lg shadow-2xl border border-b-cyan-500'>
           <h2 className='text-xl font-bold mb-4'>Statistics</h2>
@@ -35,7 +35,7 @@ const Dashboard = () => {
           <p>Latest notifications and alerts will appear here.</p>
         </div>
       </div>
-    </DashboardLayout>
+    </Sidebar>
   );
 };
 

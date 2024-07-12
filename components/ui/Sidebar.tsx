@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { FolderOpenDot, House, LayoutDashboard, UserPen } from 'lucide-react';
-import { Button } from '../ui/button';
+import { Button } from './button';
 import Image from 'next/image';
 
-const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+const Sidebar = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className='flex h-screen rounded-2xl border border-b-cyan-500'>
       {/* Sidebar */}
@@ -105,4 +105,4 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default DashboardLayout;
+export default Sidebar;
