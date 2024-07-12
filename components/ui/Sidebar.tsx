@@ -111,7 +111,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, title }) => {
           </ul>
         </nav>
         <div className='p-4'>
-          <button className='w-full bg-red-600 hover:bg-red-400 py-2 px-4 rounded-lg'>
+          <button className='w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-lg'>
             Sign Out
           </button>
         </div>
