@@ -1,10 +1,11 @@
+// app/layout.tsx
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 
 import { cn } from '@/lib/utils';
-import NavbarContainer from '@/components/navigation/NavbarContainer';
 import { ThemeProvider } from '@/components/theme-provider';
+import { ClientLayout } from '@/components/navigation/ClientLayout';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
   title: 'JobTrail',
   description: 'A job applications tracking tool',
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,8 +36,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NavbarContainer />
-          {children}
+          <ClientLayout>{children}</ClientLayout>
         </ThemeProvider>
       </body>
     </html>
