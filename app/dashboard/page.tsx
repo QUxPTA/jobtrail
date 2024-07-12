@@ -20,7 +20,7 @@ const Dashboard = () => {
   }
 
   return (
-    <Sidebar>
+    <Sidebar title='Dashboard'>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
         <div className=' p-6 rounded-lg shadow-2xl border border-b-cyan-500'>
           <h2 className='text-xl font-bold mb-4'>Statistics</h2>
