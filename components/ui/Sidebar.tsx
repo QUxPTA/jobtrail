@@ -1,10 +1,21 @@
 import React from 'react';
 import Link from 'next/link';
-import { FolderOpenDot, House, LayoutDashboard, UserPen } from 'lucide-react';
-import { Button } from './button';
+import {
+  FolderOpenDot,
+  House,
+  LayoutDashboard,
+  Rss,
+  UserPen,
+} from 'lucide-react';
+import { Button } from '../ui/button';
 import Image from 'next/image';
 
-const Sidebar = ({ children }: { children: React.ReactNode }) => {
+interface SidebarProps {
+  children: React.ReactNode;
+  title: string;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ children, title }) => {
   return (
     <div className='flex h-screen rounded-2xl border border-b-cyan-500'>
       {/* Sidebar */}
@@ -25,52 +36,77 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
         <nav className='flex-1 px-4 m-5'>
           <ul className='flex-row'>
             <li className='mb-4'>
-              <Button
-                variant='secondary'
-                className='border-b-cyan-500 rounded-xl text-cyan-500 hover:text-cyan-300 width'
-              >
-                <LayoutDashboard />
-                <span
-                  className='text-cyan-500 font-bold p-2'
-                  style={{
-                    width: 100,
-                  }}
+              <Link href='/applications'>
+                <Button
+                  variant='secondary'
+                  className='border-b-cyan-500 rounded-xl text-cyan-500 hover:text-cyan-300'
                 >
-                  Dashboard
-                </span>
-              </Button>
+                  <FolderOpenDot />
+                  <span
+                    className='text-cyan-500 font-bold p-2'
+                    style={{
+                      width: 100,
+                    }}
+                  >
+                    Applications
+                  </span>
+                </Button>
+              </Link>
             </li>
             <li className='mb-4'>
-              <Button
-                variant='secondary'
-                className='border-b-cyan-500 rounded-xl text-cyan-500 hover:text-cyan-300'
-              >
-                <FolderOpenDot />
-                <span
-                  className='text-cyan-500 font-bold p-2'
-                  style={{
-                    width: 100,
-                  }}
+              <Link href='/dashboard'>
+                <Button
+                  variant='secondary'
+                  className='border-b-cyan-500 rounded-xl text-cyan-500 hover:text-cyan-300 width'
                 >
-                  Applications
-                </span>
-              </Button>
+                  <LayoutDashboard />
+                  <span
+                    className='text-cyan-500 font-bold p-2'
+                    style={{
+                      width: 100,
+                    }}
+                  >
+                    Dashboard
+                  </span>
+                </Button>
+              </Link>
+            </li>
+
+            <li className='mb-4'>
+              <Link href='/feed'>
+                <Button
+                  variant='secondary'
+                  className='border-b-cyan-500 rounded-xl text-cyan-500 hover:text-cyan-300'
+                >
+                  <Rss />
+                  <span
+                    className='text-cyan-500 font-bold p-2'
+                    style={{
+                      width: 100,
+                    }}
+                  >
+                    Job-Feed
+                  </span>
+                </Button>
+              </Link>
             </li>
             <li className='mb-4'>
-              <Button
-                variant='secondary'
-                className='border-b-cyan-500 rounded-xl text-cyan-500 hover:text-cyan-300'
-              >
-                <UserPen />
-                <span
-                  className='text-cyan-500 font-bold p-2'
-                  style={{
-                    width: 100,
-                  }}
+              <Link href='/profile'>
+                <Button
+                  variant='secondary'
+                  className='border-b-cyan-500 rounded-xl text-cyan-500 hover:text-cyan-300'
                 >
-                  Profile
-                </span>
-              </Button>
+                  <UserPen />
+                  <span
+                    className='text-cyan-500 font-bold p-2'
+                    style={{
+                      width: 100,
+                    }}
+                  >
+                    Profile
+                  </span>
+                </Button>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -84,8 +120,8 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
       {/* Main Content */}
       <div className='flex-1 flex flex-col'>
         {/* Top Bar */}
-        <header className=' shadow-md py-4 px-6 flex justify-between items-center rounded-lg border border-b-cyan-500'>
-          <h1 className='text-xl font-bold'>Dashboard</h1>
+        <header className='shadow-md py-4 px-6 flex justify-between items-center rounded-lg border border-b-cyan-500'>
+          <h1 className='text-xl font-bold'>{title}</h1>
           <div className='flex items-center'>
             <span className='mr-4 text-cyan-500'>Welcome, User</span>
             <Image
