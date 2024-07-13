@@ -7,15 +7,15 @@ const Footer = () => {
       <div className='container mx-auto px-4 '>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center'>
           <div>
-            <h3 className='text-xl font-bold mb-2'>JobTrail</h3>
-            <p className='text-sm'>
+            <h3 className='text-xl text-center font-bold mb-2'>JobTrail</h3>
+            <p className='text-sm text-center'>
               A tool created with gratitude for the ALX community and job
               seekers in general
             </p>
           </div>
           <div>
-            <h3 className='text-xl font-bold mb-2'>Links</h3>
-            <ul className='text-sm space-y-2'>
+            <h3 className='text-xl text-center font-bold mb-2'>Links</h3>
+            <ul className='text-sm text-center space-y-2'>
               <li>
                 <a
                   href='#about'
@@ -43,7 +43,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className='text-xl font-bold mb-2'>Social Media</h3>
+            <h3 className='text-xl text-center font-bold mb-2'>Social Media</h3>
             <div className='flex space-x-4'>
               <a
                 href='https://github.com/kibuchijw'
