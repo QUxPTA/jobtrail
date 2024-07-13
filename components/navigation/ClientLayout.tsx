@@ -11,7 +11,8 @@ export const ClientLayout: React.FC<{ children: React.ReactNode }> = ({
   const showNavbar =
     !pathname.startsWith('/dashboard') &&
     !pathname.startsWith('/feed') &&
-    !pathname.startsWith('/profile');
+    !pathname.startsWith('/profile') &&
+    !pathname.startsWith('/applications');
 
   return (
     <>
