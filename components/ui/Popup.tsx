@@ -7,8 +7,8 @@ const Popup = () => {
       <div className='bg-white p-8 rounded-md shadow-md text-center'>
         <h2 className='text-2xl font-semibold mb-4'>Sign Up to Continue</h2>
         <p className='mb-6'>
-          You&apos;ve reached the interaction limit. Sign up to unlock full
-          features!
+          Thank you for visiting us and exploring what we have on offer. Sign up
+          to unlock full features!
         </p>
         <Link
           href='/signup'
