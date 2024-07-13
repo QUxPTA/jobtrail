@@ -29,19 +29,19 @@ const Navbar = (props: Props) => {
   }, []);
 
   return (
-    <nav className='w-full px-4 py-2 rounded-2xl justify-between border border-b-cyan-500 m-10'>
+    <nav className='h-16 w-full justify-between rounded-xl border bg-gradient-to-b from-cyan-500 to-zinc-500'>
       <div className='container mx-auto flex justify-between items-center'>
         {/* Logo */}
         <Link
           href='/'
-          className='text-xl font-semibold flex items-center cursor-pointer'
+          className='text-2xl font-semibold flex items-center cursor-pointer'
         >
-          <Image src='/logo.svg' alt='Jobtrail logo' width={30} height={30} />
-          <span className='ml-2 text-cyan-500'>Jobtrail</span>
+          <Image src='/logo.svg' alt='Jobtrail logo' width={50} height={50} />
+          <span className='ml-2 hidden sm:block'>JobTrail</span>
         </Link>
 
         {/* Mobile Menu Button */}
-        <div className='md:hidden flex items-center text-cyan-500'>
+        <div className='md:hidden flex items-center '>
           <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {/* Icon for the mobile menu button */}
             <svg
@@ -62,36 +62,27 @@ const Navbar = (props: Props) => {
         </div>
 
         {/* Navigation Links (hidden on small screens) */}
-        <div className='hidden md:flex space-x-4'>
-          <Link
-            href='/dashboard'
-            className='font-semibold text-cyan-500 hover:text-cyan-700'
-          >
+        <div className='hidden md:flex space-x-4 text-xl'>
+          <Link href='/feed' className='font-semibold'>
+            Job-Feed
+          </Link>
+          <Link href='/dashboard' className='font-semibold'>
             Dashboard
           </Link>
-          <Link
-            href='/leaderboard'
-            className='font-semibold text-cyan-500 hover:text-cyan-700'
-          >
+          <Link href='/leaderboard' className='font-semibold'>
             Leaderboard
           </Link>
-          <Link
-            href='/about'
-            className='font-semibold text-cyan-500 hover:text-cyan-700'
-          >
+          <Link href='/about' className='font-semibold'>
             About
           </Link>
         </div>
 
         {/* Sign In/Sign Up and Toggle Theme (always visible) */}
         <div className='flex space-x-4 items-center'>
-          <Link href='/signin'>
-            <Button
-              variant='ghost'
-              className='border-b-cyan-500 rounded-xl text-cyan-500'
-            >
+          <Link href='/login'>
+            <Button variant='ghost' className=' rounded-xl'>
               <UserCheck />
-              <span className='text-cyan-500 font-bold p-2'>Sign In</span>
+              <span className=' font-bold p-2'>Sign In</span>
             </Button>
           </Link>
 
@@ -104,8 +95,11 @@ const Navbar = (props: Props) => {
       {mobileMenuOpen && (
         <div
           ref={dropdownRef}
-          className='md:hidden mt-4 absolute left-0 right-0 mx-auto border border-b-zinc-500 rounded-lg shadow-md py-2 w-48 z-50 text-cyan-500'
+          className='md:hidden mt-4 absolute left-0 right-0 mx-auto bg-background border border-b-zinc-500 rounded-lg shadow-md py-2 w-48 z-50 '
         >
+          <Link href='/feed' className='block px-4 py-2'>
+            Feed
+          </Link>
           <Link href='/dashboard' className='block px-4 py-2'>
             Dashboard
           </Link>
