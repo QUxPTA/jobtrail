@@ -63,17 +63,25 @@ const Navbar = (props: Props) => {
 
         {/* Navigation Links (hidden on small screens) */}
         <div className='hidden md:flex space-x-4 text-xl'>
-          <Link href='/feed' className='font-semibold'>
-            Job-Feed
-          </Link>
-          <Link href='/dashboard' className='font-semibold'>
-            Dashboard
-          </Link>
-          <Link href='/leaderboard' className='font-semibold'>
-            Leaderboard
+          <Link href='/about' className='font-semibold'>
+            <Button variant='ghost' className=' rounded-xl'>
+              <span className='text-lg p-2'>Job-Feed</span>
+            </Button>
           </Link>
           <Link href='/about' className='font-semibold'>
-            About
+            <Button variant='ghost' className=' rounded-xl'>
+              <span className='text-lg p-2'>Dashboard</span>
+            </Button>
+          </Link>{' '}
+          <Link href='/about' className='font-semibold'>
+            <Button variant='ghost' className=' rounded-xl'>
+              <span className='text-lg p-2'>Leaderboard</span>
+            </Button>
+          </Link>{' '}
+          <Link href='/about' className='font-semibold'>
+            <Button variant='ghost' className=' rounded-xl'>
+              <span className='text-lg p-2'>About</span>
+            </Button>
           </Link>
         </div>
 
