@@ -1,23 +1,21 @@
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
-import { useEffect, useState } from 'react';
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
-export const useAuth = () => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+export const hashPassword = async (password: string) => {
+  const salt = await bcrypt.genSalt(10);
+  return bcrypt.hash(password, salt);
+};
 
-  useEffect(() => {
-    // Simulate fetching user data from an API
-    const fetchUser = async () => {
-      // Replace this with your actual authentication logic
-      const userData = await new Promise((resolve) =>
-        setTimeout(() => resolve({ name: 'John Doe' }), 1000)
-      );
-      setUser(userData);
-      setLoading(false);
-    };
+export const verifyPassword = async (password: string, hashedPassword: string) => {
+  return bcrypt.compare(password, hashedPassword);
+};
 
-    fetchUser();
-  }, []);
+export const signToken = (userId: string) => {
+  return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '1h' });
+};
 
-  return { user, loading };
+export const verifyToken = (token: string) => {
+  return jwt.verify(token, JWT_SECRET);
 };
