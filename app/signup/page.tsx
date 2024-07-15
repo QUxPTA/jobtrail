@@ -56,7 +56,7 @@ const Signup = () => {
               name='name'
               value={formData.name}
               onChange={handleChange}
-              className='mt-1 block w-full px-3 py-2 rounded-md bg-white'
+              className='mt-1 block w-full px-3 py-2 rounded-md'
               required
             />
           </div>
@@ -70,7 +70,7 @@ const Signup = () => {
               name='email'
               value={formData.email}
               onChange={handleChange}
-              className='mt-1 block w-full px-3 py-2 rounded-md bg-white'
+              className='mt-1 block w-full px-3 py-2 rounded-md'
               required
             />
           </div>
@@ -84,7 +84,7 @@ const Signup = () => {
               name='password'
               value={formData.password}
               onChange={handleChange}
-              className='mt-1 block w-full px-3 py-2 rounded-md bg-white'
+              className='mt-1 block w-full px-3 py-2 rounded-md'
               required
             />
           </div>
@@ -101,13 +101,13 @@ const Signup = () => {
               name='confirmPassword'
               value={formData.confirmPassword}
               onChange={handleChange}
-              className='mt-1 block w-full px-3 py-2 rounded-md bg-white'
+              className='mt-1 block w-full px-3 py-2 rounded-md'
               required
             />
           </div>
           <button
             type='submit'
-            className='w-full bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-4 rounded-md shadow-md transition duration-300'
+            className='w-full bg-cyan-500 hover:bg-cyan-600 py-2 px-4 rounded-md shadow-md transition duration-300'
           >
             Sign Up
           </button>
