@@ -1,126 +1,72 @@
-'use client';
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { register } from '@/action/user';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { getSession } from '@/lib/getSession';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
-const Signup = () => {
-  const router = useRouter();
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSignUp = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // TODO: Perform sign-up logic
-    if (formData.password === formData.confirmPassword) {
-      // Simulate sign-up logic
-      console.log('Sign-up successful:', formData);
-      router.push('/dashboard'); // Redirect to dashboard after sign-up
-    } else {
-      alert('Passwords do not match');
-    }
-  };
+const Register = async () => {
+  const session = await getSession();
+  const user = session?.user;
+  if (user) redirect('/dashboard');
 
   return (
-    <div className='flex h-screen items-center justify-center'>
-      <div className='container mx-auto px-4 py-8'>
-        <h1 className='text-3xl font-bold mb-4 text-center text-cyan-500'>
-          Sign Up
-        </h1>
-        <p className='text-lg mb-8 text-center'>
-          Create an account to get started.
-        </p>
-        <form
-          className='max-w-screen-sm mx-auto bg-gradient-to-b from-cyan-500 to-zinc-600 rounded-2xl p-8 shadow-lg'
-          onSubmit={handleSignUp}
-        >
-          <div className='mb-4'>
-            <label htmlFor='name' className='block text-lg font-medium'>
-              Name
-            </label>
-            <input
+    <div className='justify-center m-24 max-w-screen-sm mx-auto bg-gradient-to-t from-cyan-500 to-zinc-500 rounded-2xl p-8 shadow-lg'>
+      <h2 className='font-bold text-xl'>Welcome to JobTrail</h2>
+      <p className='text-sm max-w-sm mt-2'>
+        Please fill in the following details
+      </p>
+
+      <form className='my-8' action={register}>
+        <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4'>
+          <div className='flex-grow'>
+            <Label htmlFor='firstname' className='mb-2'>
+              First Name
+            </Label>
+            <Input
+              id='firstname'
+              placeholder='DB'
               type='text'
-              id='name'
-              name='name'
-              value={formData.name}
-              onChange={handleChange}
-              className='mt-1 block w-full px-3 py-2 rounded-md'
-              required
+              name='firstname'
             />
           </div>
-          <div className='mb-4'>
-            <label htmlFor='email' className='block text-lg font-medium'>
-              Email Address
-            </label>
-            <input
-              type='email'
-              id='email'
-              name='email'
-              value={formData.email}
-              onChange={handleChange}
-              className='mt-1 block w-full px-3 py-2 rounded-md'
-              required
+          <div className='flex-grow'>
+            <Label htmlFor='lastname' className='mb-2'>
+              Last Name
+            </Label>
+            <Input
+              id='lastname'
+              placeholder='Cooper'
+              type='text'
+              name='lastname'
             />
           </div>
-          <div className='mb-4'>
-            <label htmlFor='password' className='block text-lg font-medium'>
-              Password
-            </label>
-            <input
-              type='password'
-              id='password'
-              name='password'
-              value={formData.password}
-              onChange={handleChange}
-              className='mt-1 block w-full px-3 py-2 rounded-md'
-              required
-            />
-          </div>
-          <div className='mb-6'>
-            <label
-              htmlFor='confirmPassword'
-              className='block text-lg font-medium'
-            >
-              Confirm Password
-            </label>
-            <input
-              type='password'
-              id='confirmPassword'
-              name='confirmPassword'
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              className='mt-1 block w-full px-3 py-2 rounded-md'
-              required
-            />
-          </div>
-          <button
-            type='submit'
-            className='w-full bg-cyan-500 hover:bg-cyan-600 py-2 px-4 rounded-md shadow-md transition duration-300'
-          >
-            Sign Up
-          </button>
-        </form>
-        <p className='mt-4 text-center'>
+        </div>
+
+        <Label htmlFor='email'>Email Address</Label>
+        <Input id='email' placeholder='me@email.me' type='email' name='email' />
+
+        <Label htmlFor='password'>Password</Label>
+        <Input
+          id='password'
+          placeholder='***********'
+          type='password'
+          name='password'
+          className='mb-5'
+        />
+
+        <button className='bg-gradient-to-br relative group/bt w-full rounded-md h-10 font-medium'>
+          Sign up &rarr;
+        </button>
+
+        <p className='text-sm max-w-sm mt-2'>
           Already have an account?{' '}
-          <Link href='/login' className='text-cyan-500 hover:underline'>
-            Sign In here
+          <Link href='/login'>
+            <span className='font-bold'>Login</span>
           </Link>
         </p>
-      </div>
+      </form>
     </div>
   );
 };
-
-export default Signup;
+export default Register;
