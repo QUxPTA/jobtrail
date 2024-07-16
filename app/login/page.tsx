@@ -1,85 +1,59 @@
-'use client';
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { login } from '@/action/user';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { IconBrandGithub } from '@tabler/icons-react';
+import { signIn } from '@/auth';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
+import { getSession } from '@/lib/getSession';
 
-const Login = () => {
-  const router = useRouter();
-
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSignIn = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // TODO: Perform sign-in logic
-    router.push('/dashboard'); // Redirect to dashboard after sign-in
-  };
+const Login = async () => {
+  const session = await getSession();
+  const user = session?.user;
+  if (user) redirect('/dashboard');
 
   return (
-    <div className='flex h-screen items-center justify-center'>
-      <div className='container mx-auto px-4 py-8'>
-        <h1 className='text-3xl font-bold mb-4 text-center text-cyan-500'>
-          Sign In
-        </h1>
-        <p className='text-lg mb-8 text-center'>
-          Sign in to access your account.
-        </p>
-        <form
-          className='max-w-screen-sm mx-auto bg-gradient-to-b from-cyan-500 to-zinc-600 rounded-2xl p-8 shadow-lg'
-          onSubmit={handleSignIn}
-        >
-          <div className='mb-4'>
-            <label htmlFor='email' className='block text-lg font-medium'>
-              Email Address
-            </label>
-            <input
-              type='email'
-              id='email'
-              name='email'
-              value={formData.email}
-              onChange={handleChange}
-              className='mt-1 block w-full px-3 py-2 rounded-md'
-              required
-            />
-          </div>
-          <div className='mb-6'>
-            <label htmlFor='password' className='block text-lg font-medium'>
-              Password
-            </label>
-            <input
-              type='password'
-              id='password'
-              name='password'
-              value={formData.password}
-              onChange={handleChange}
-              className='mt-1 block w-full px-3 py-2 rounded-md e'
-              required
-            />
-          </div>
-          <button
-            type='submit'
-            className='w-full bg-cyan-500 hover:bg-cyan-600  py-2 px-4 rounded-md shadow-md transition duration-300'
-          >
-            Sign In
-          </button>
-        </form>
-        <p className='mt-4 text-center'>
+    <div className='m-24 max-w-screen-sm mx-auto bg-gradient-to-t from-cyan-500 to-zinc-600 rounded-2xl p-8 shadow-lg'>
+      <form className='my-8' action={login}>
+        <Label htmlFor='email'>Email Address</Label>
+        <Input id='email' placeholder='me@email.me' type='email' name='email' />
+
+        <Label htmlFor='email'>Password</Label>
+        <Input
+          id='password'
+          placeholder='***********'
+          type='password'
+          name='password'
+          className='mb-6'
+        />
+
+        <button className='bg-gradient-to-br relative group/bt w-full rounded-md h-10 font-medium'>
+          Login &rarr;
+        </button>
+
+        <p className='text-right text-sm max-w-sm mt-4 '>
           Don&apos;t have an account?{' '}
-          <Link href='/signup' className='text-cyan-500 hover:underline'>
-            Sign Up here
+          <Link href='/signup'>
+            <span className='font-bold'>Register</span>
           </Link>
         </p>
-      </div>
+
+        <div className='bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full' />
+      </form>
+      <form
+        action={async () => {
+          'use server';
+          await signIn('github');
+        }}
+      >
+        <button
+          className='text-center relative flex space-x-2 items-center justify-center px-4 w-full border rounded-xl'
+          type='submit'
+        >
+          <IconBrandGithub className='h-6 w-6 text-center' />
+          <span className='text-center text-sm'>Sign in with Github</span>
+        </button>
+      </form>
     </div>
   );
 };
