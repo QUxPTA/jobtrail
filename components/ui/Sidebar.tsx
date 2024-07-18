@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../ui/button';
 import Image from 'next/image';
+import { handleSignOut } from '@/lib/signOutAction';
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -110,11 +111,11 @@ const Sidebar: React.FC<SidebarProps> = ({ children, title }) => {
             </li>
           </ul>
         </nav>
-        <div className='p-4'>
-          <button className='w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-lg'>
+        <form action={handleSignOut}>
+          <button className='justify-items-center min-w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-lg'>
             Sign Out
           </button>
-        </div>
+        </form>
       </aside>
 
       {/* Main Content */}
