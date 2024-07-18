@@ -1,9 +1,12 @@
-'use client';
-
-import React, { useEffect } from 'react';
+import React from 'react';
 import Sidebar from '@/components/ui/Sidebar';
+import { getSession } from '@/lib/getSession';
+import { redirect } from 'next/navigation';
 
-const Dashboard = () => {
+const Dashboard = async () => {
+  const session = await getSession();
+  const user = session?.user;
+  if (!user) return redirect('/login');
   return (
     <Sidebar title='Dashboard'>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
