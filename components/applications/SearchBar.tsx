@@ -1,7 +1,11 @@
 'use client';
 import React, { useState } from 'react';
 
-const SearchBar = ({ onSearch }) => {
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
   const handleSearch = () => {
@@ -18,7 +22,7 @@ const SearchBar = ({ onSearch }) => {
         className='w-full px-3 py-2 border rounded-lg'
       />
       <button
-        className='mt-2 w-full bg-blue-500 py-2 px-4 rounded-lg hover:bg-blue-600'
+        className='mt-2 w-full bg-cyan-500 py-2 px-4 rounded-lg hover:bg-cyan-800'
         onClick={handleSearch}
       >
         Search

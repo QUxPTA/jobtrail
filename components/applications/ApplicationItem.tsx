@@ -1,26 +1,63 @@
 'use client';
 import React from 'react';
 
-const ApplicationItem = ({ application, onEdit, onDelete }) => {
+interface Application {
+  _id: string;
+  userId: string;
+  companyName: string;
+  position: string;
+  status: string;
+  emailResponse: string;
+  manualResponse?: string;
+  appliedDate: string;
+  notes: string;
+}
+
+interface ApplicationItemProps {
+  application: Application;
+  onEdit: (application: Application) => void;
+  onDelete: (id: string) => void;
+}
+
+const ApplicationItem: React.FC<ApplicationItemProps> = ({
+  application,
+  onEdit,
+  onDelete,
+}) => {
   return (
-    <div className='border p-4 rounded-lg mb-4 shadow-md'>
-      <h3 className='text-xl font-bold'>{application.jobTitle}</h3>
-      <p className='text-sm text-gray-600'>{application.company}</p>
-      <p className='text-sm text-gray-600'>
-        {new Date(application.applicationDate).toLocaleDateString()}
+    <div className='flex flex-col border p-4 rounded-lg border-b-cyan-500 mb-4 shadow-lg min-h-[250px]'>
+      <h3 className='text-xl font-bold mb-2'>{application.position}</h3>
+      <p className='text-sm mb-1'>
+        <strong>Company:</strong> {application.companyName}
       </p>
-      <p className='text-sm text-gray-600'>{application.status}</p>
-      <p className='text-sm text-gray-600'>{application.notes}</p>
-      <div className='flex space-x-2 mt-2'>
+      <p className='text-sm mb-1'>
+        <strong>Application Date:</strong>{' '}
+        {new Date(application.appliedDate).toLocaleDateString()}
+      </p>
+      <p className='text-sm mb-1'>
+        <strong>Status:</strong> {application.status}
+      </p>
+      <p className='text-sm mb-1'>
+        <strong>Email Response:</strong> {application.emailResponse}
+      </p>
+      {application.manualResponse && (
+        <p className='text-sm mb-1'>
+          <strong>Tone:</strong> {application.manualResponse}
+        </p>
+      )}
+      <p className='text-sm mb-2'>
+        <strong>Notes:</strong> {application.notes}
+      </p>
+      <div className='flex space-x-2 mt-auto'>
         <button
-          className='bg-yellow-500 py-1 px-2 rounded-lg hover:bg-yellow-600'
+          className='bg-amber-500 py-1 px-2 rounded-lg hover:bg-amber-600'
           onClick={() => onEdit(application)}
         >
           Edit
         </button>
         <button
           className='bg-red-500 py-1 px-2 rounded-lg hover:bg-red-600'
-          onClick={() => onDelete(application.id)}
+          onClick={() => onDelete(application._id)}
         >
           Delete
         </button>
