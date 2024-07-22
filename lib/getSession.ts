@@ -1,7 +1,6 @@
 import { auth } from "@/auth";
-import { cache } from "react";
 
-export const getSession = cache(async () => {
-  const session = await auth();
+export const getSession = async (req: any, res: any) => {
+  const session = await auth(req, res);
   return session;
-});
+};
