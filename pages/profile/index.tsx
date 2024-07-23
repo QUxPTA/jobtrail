@@ -1,11 +1,21 @@
 'use client';
-import React, { useState } from 'react';
-import Sidebar from '../../../components/ui/Sidebar';
+import React, { useEffect, useState } from 'react';
+import Sidebar from '../../components/ui/Sidebar';
+import { useRouter } from 'next/navigation';
+import { getSession } from '@/lib/getSession';
 
-const ProfilePage = () => {
+const ProfilePage = ({ session }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [profilePhoto, setProfilePhoto] = useState<File | null>(null);
+  const user = session?.user;
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/login');
+    }
+  }, [user, router]);
 
   const handleProfilePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -88,6 +98,15 @@ const ProfilePage = () => {
       </div>
     </Sidebar>
   );
+};
+
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context.req, context.res);
+  return {
+    props: {
+      session,
+    },
+  };
 };
 
 export default ProfilePage;

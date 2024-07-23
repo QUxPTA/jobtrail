@@ -7,8 +7,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/getSession';
 
-const Login = async () => {
-  const session = await getSession();
+const Login = ({ session }) => {
   const user = session?.user;
   if (user) redirect('/dashboard');
 
@@ -58,4 +57,12 @@ const Login = async () => {
   );
 };
 
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context.req, context.res);
+  return {
+    props: {
+      session,
+    },
+  };
+};
 export default Login;
