@@ -5,9 +5,10 @@ import { IconBrandGithub } from '@tabler/icons-react';
 import { signIn } from '@/auth';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import { getSession } from '@/lib/getSession';
+import { auth } from '@/auth';
 
-const Login = ({ session }) => {
+const Login = async () => {
+  const session = await auth();
   const user = session?.user;
   if (user) redirect('/dashboard');
 
@@ -57,12 +58,4 @@ const Login = ({ session }) => {
   );
 };
 
-export const getServerSideProps = async (context) => {
-  const session = await getSession(context.req, context.res);
-  return {
-    props: {
-      session,
-    },
-  };
-};
 export default Login;

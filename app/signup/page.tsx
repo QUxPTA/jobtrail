@@ -1,19 +1,14 @@
 import { register } from '@/action/user';
+import { auth } from '@/auth';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { getSession } from '@/lib/getSession';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { redirect } from 'next/navigation';
 
-const Register = ({ session }) => {
+const Register = async () => {
+  const session = await auth();
   const user = session?.user;
-  const router = useRouter();
-  useEffect(() => {
-    if (user) {
-      router.push('/dashboard');
-    }
-  }, [user, router]);
+  if (user) redirect('/dashboard');
 
   return (
     <div className='justify-center m-24 max-w-screen-sm mx-auto bg-gradient-to-t from-cyan-500 to-zinc-500 rounded-2xl p-8 shadow-lg'>
@@ -74,14 +69,4 @@ const Register = ({ session }) => {
     </div>
   );
 };
-
-export const getServerSideProps = async (context) => {
-  const session = await getSession(context.req, context.res);
-  return {
-    props: {
-      session,
-    },
-  };
-};
-
 export default Register;
