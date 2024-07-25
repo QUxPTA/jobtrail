@@ -1,7 +1,46 @@
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/kibuchijw/jobtrail">
+    <img src="./public/logo.svg" alt="Logo" width="200" height="200">
+  </a>
+
+  <h3 align="center">JobTrail</h3>
+
+  <p align="center">
+    An applications tracking webapp
+    <br />
+    <a href="https://drive.google.com/file/d/1BRGXCwXd5R13AwL70bCWVRRy4CVAXcY7/view?usp=sharing">View Demo</a>
+    ·
+    <a href="https://github.com/kibuchijw/jobtrail/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    ·
+    <a href="https://github.com/kibuchijw/jobtrail/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p>
+</div>
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+<center><img src="./public/jobtrail.png" alt="JobTrail" style="border-radius: 15px;"></center>
+
+<p align='center'>
+In my days of freelancing, I once got a client whom I helped with a number of tasks as his virtual assistant. One such task was applying to jobs and filling in the job application details in a spreadsheet he had prepared. What intrigued me most, was how the email part would update dynamically, if the email was read, bounced or pending.Coming to the end of my software engineering journey, I feel empowered to build one such tool that achieves such functionality among a horde of others. This, I believe will help not only I, but the entire ALX community as we go into yet another phase of our lives. A phase of making job applications.
+</p>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+### Built With
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`yarn create next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
-Install dependencies
+* Clone the repository 
+``` link
+git clone https://github.com/kibucjw/jobtrail
+```
+* Install dependencies
 
 ```bash
 # Preffered
@@ -11,7 +50,7 @@ npm i
 # or
 ```
 
-First, run the development server:
+* Run the development server:
 
 ```bash
 # Preffered
@@ -25,9 +64,7 @@ bun dev
 
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
@@ -38,10 +75,22 @@ To learn more about Next.js, take a look at the following resources:
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) as well
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributins from the community are more that welcome! If you have suggestions or improvements, please follow these steps:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* Fork the repository.
+* Create a new branch `git checkout -b feature/YourFeature`.
+* Make your changes.
+* Commit your changes `git commit -am 'Add new feature'`.
+* Push to the branch `git push origin feature/YourFeature`.
+* Open a Pull Request with a clear description of the changes.
+
+## Reach Out
+* [quxpta.tech](https://www.quxpta.tech)
+* [twitter](https://x.com/QUxPTA)
+
+## License
+MIT © [Joseph Kibuchi](LICENSE.txt)
